@@ -28,10 +28,10 @@ router.get('/:cid', async (req, res) => {
             return res.status(404).json({ error: 'El carrito con el ID buscado no existe.'})
         } else {
             // Calcular los subtotales
-            const subtotal = filterById.products.map(product => product.quantity * product.product.price);
+            const subtotal = filterById.products.map(product => product.quantity * product.product.price)
 
             // Calcular el total del carrito
-            const total = subtotal.reduce((acc, subtotal) => acc + subtotal, 0);
+            const total = subtotal.reduce((acc, subtotal) => acc + subtotal, 0)
             res.render ('cart', { 
                 filterById,
                 total,
@@ -68,7 +68,7 @@ router.post('/:cid/products/:pid', async (req, res) => {
 router.put('/:cid', async (req, res) => {
     try {
         const { cid } = req.params
-        const { products } = req.body;
+        const { products } = req.body
 
         const result = await cartManager.updateCart(cid, products)
 
@@ -86,15 +86,15 @@ router.put('/:cid', async (req, res) => {
 //actualizar producto pasando el cid y pid
 router.put('/:cid/products/:pid', async (req, res) => {
     try {
-        const { cid, pid } = req.params;
-        const { quantity } = req.body;
+        const { cid, pid } = req.params
+        const { quantity } = req.body
 
-        const result = await cartManager.updateProductQuantity(cid, pid, quantity);
+        const result = await cartManager.updateProductQuantity(cid, pid, quantity)
 
         if (result.success) {
-            res.status(200).json({ message: result.message });
+            res.status(200).json({ message: result.message })
         } else {
-            res.status(500).json({ error: result.message });
+            res.status(500).json({ error: result.message })
         }
         } catch (error) {
             console.error('Error al actualizar la cantidad del producto:', error.message)

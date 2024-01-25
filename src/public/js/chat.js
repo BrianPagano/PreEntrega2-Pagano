@@ -57,7 +57,7 @@ const getUsername = async () => {
 getUsername()
 
 socket.on('messageLogs', chats => {
-  let messages = '';
-  chats.forEach(chat => (messages = `${chat.user} dice:${chat.message} <hr>` + messages));
-  messageLogs.innerHTML = messages;
-});
+  let messages = ''
+  chats.forEach(chat => (messages = `${chat.user} dice:${chat.message} <hr>` + messages))
+  messageLogs.innerHTML = messages
+})

@@ -21,8 +21,7 @@ function submitForm() {
     .then(response => response.json())
     .then(data => {
         console.log(data)
-          // Limpia el formulario
-          document.getElementById('productForm').reset()
+       
           // Muestra un mensaje de alerta
           alert('Producto creado correctamente')  
     })
